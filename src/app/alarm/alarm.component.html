@@ -1,0 +1,27 @@
+<h1>Alarm</h1>
+<div class="example-container">
+    <mat-form-field> <input matInput
+      [(ngModel)]="titleModel" placeholder="Title"> </mat-form-field>
+    <br>
+   
+    <mat-form-field> <input matInput
+      [(ngModel)]="dateTimeModel" placeholder="yyyy-mm-dd hh:mm:ss"> </mat-form-field>
+    <br>
+   
+  </div>
+   
+  <br>
+   
+  <button mat-raised-button color="accent" (click)="createAlarm()">
+    Add Note</button>
+   
+  <hr>
+   
+  <p *ngFor="let i of alarms">
+    <mat-card-title> {{ i.title }} </mat-card-title>
+    <button (click)="deleteAlarm(i)">Delete</button> <br/>
+    <button (click)="i.edit=true">Edit</button> <br/>
+    <mat-form-field *ngIf="i.edit==true"> <input matInput [(ngModel)]=newDateTimeModel/></mat-form-field>
+    <button *ngIf="i.edit==true"(click)="i.edit=false"(click)="reset()">Cancel</button>
+    <button *ngIf="i.edit==true"(click)="editAlarm(i)"(click)="i.edit=false"(click)="reset()">Okay</button> <br/>
+    <mat-card> Alarm: {{ i.myDate }} </mat-card>

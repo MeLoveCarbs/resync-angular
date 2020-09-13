@@ -1,0 +1,28 @@
+<h1>NOTES</h1>
+<div class="example-container">
+    <mat-form-field> <input matInput
+      [(ngModel)]="titleModel" placeholder="Title"> </mat-form-field>
+    <br>
+   
+    <mat-form-field> <input matInput
+      [(ngModel)]="contentModel" placeholder="Enter your content"> </mat-form-field>
+    <br>
+   
+  </div>
+   
+  <br>
+   
+  <button mat-raised-button color="accent" (click)="createQuicknotes()">
+    Add Note</button>
+   
+  <hr>
+   
+  <p *ngFor="let i of quicknotes">
+    <mat-card-title> {{ i.title }} </mat-card-title>
+    <button (click)="deleteQuicknotes(i)">Delete</button> <br/>
+    <button (click)="i.edit=true">Edit</button> <br/>
+    <mat-form-field *ngIf="i.edit==true"> <input matInput [(ngModel)]=newContentModel/></mat-form-field>
+    <button *ngIf="i.edit==true"(click)="i.edit=false"(click)="reset()">Cancel</button>
+    <button *ngIf="i.edit==true"(click)="editQuicknotes(i)"(click)="i.edit=false"(click)="reset()">Okay</button> <br/>
+    <mat-card> {{ i.content }} </mat-card>
+    <mat-card> {{ i.timestamp }} </mat-card>

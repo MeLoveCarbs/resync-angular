@@ -1,0 +1,11 @@
+<h1>History</h1>
+  <p *ngFor="let i of historyAlarms">
+    <mat-card-title> {{ i.title }} </mat-card-title>
+    <button (click)="deleteHistoryAlarms(i)">Delete</button> <br/>
+    <mat-card> Alarm: {{ i.myDate }} </mat-card>
+
+  <p *ngFor="let i of historyNotes">
+    <mat-card-title> {{ i.title }} </mat-card-title>
+    <button (click)="deleteHistoryNotes(i)">Delete</button> <br/>
+    <mat-card> {{ i.content }} </mat-card>
+    <mat-card> {{ i.timestamp }} </mat-card>
